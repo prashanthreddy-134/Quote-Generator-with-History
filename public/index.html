@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commonplace · Quote Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,500&display=swap"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <h1>Commonplace</h1>
+      <p class="lede">Random quotes from an outside source, each one kept in your history.</p>
+    </header>
+
+    <section class="slip" aria-labelledby="current-heading">
+      <h2 id="current-heading" class="visually-hidden">Current quote</h2>
+      <figure>
+        <blockquote id="quote-text">No quote yet. Fetch one to begin your history.</blockquote>
+        <figcaption id="quote-author"></figcaption>
+      </figure>
+
+      <div class="slip-actions">
+        <button id="new-quote" class="btn" type="button">New quote</button>
+        <p id="status" class="status" role="status"></p>
+      </div>
+
+      <p id="error" class="error" role="alert" hidden></p>
+    </section>
+
+    <section class="history" aria-labelledby="history-heading">
+      <div class="history-head">
+        <h2 id="history-heading">History</h2>
+        <p id="history-count" class="count"></p>
+        <button id="clear-history" class="btn-text danger" type="button" hidden>Clear all</button>
+      </div>
+
+      <ol id="history-list" class="ledger"></ol>
+      <p id="history-empty" class="empty">Nothing saved yet. Each quote you fetch is recorded here.</p>
+      <button id="load-more" class="btn-text" type="button" hidden>Show more</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

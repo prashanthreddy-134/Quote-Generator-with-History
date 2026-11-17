@@ -1,0 +1,19 @@
+{
+  "name": "quote-generator-with-history",
+  "version": "1.0.0",
+  "description": "Fetches random quotes from an external API and keeps every fetched quote as history in SQLite.",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test test/api.test.js test/quoteApi.test.js"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2"
+  }
+}

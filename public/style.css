@@ -1,0 +1,299 @@
+:root {
+  --night: #17211e;
+  --night-raised: #1e2a26;
+  --paper: #ece4d2;
+  --ink: #1b2420;
+  --ink-soft: #4d5a54;
+  --brass: #c9a255;
+  --mist: #9daca4;
+  --rule: rgba(236, 228, 210, 0.14);
+  --danger: #e0907a;
+
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--night);
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.page {
+  width: min(100% - 2.5rem, 44rem);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 7vw, 5rem) 0 4rem;
+}
+
+/* Masthead */
+
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.lede {
+  margin: 0.75rem 0 0;
+  max-width: 30ch;
+  color: var(--mist);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* Quote slip: the one memorable object on the page */
+
+.slip {
+  position: relative;
+  margin-top: clamp(2.25rem, 5vw, 3.25rem);
+  padding: clamp(2rem, 5vw, 3.25rem);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 40px -22px rgba(0, 0, 0, 0.7);
+}
+
+.slip figure {
+  margin: 0;
+}
+
+.slip blockquote {
+  margin: 0;
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+  font-optical-sizing: auto;
+}
+
+.slip figcaption {
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.slip figcaption:not(:empty)::before {
+  content: "— ";
+}
+
+.slip.is-fresh blockquote,
+.slip.is-fresh figcaption {
+  animation: settle 420ms ease-out both;
+}
+
+.slip.is-fresh figcaption {
+  animation-delay: 90ms;
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.slip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  margin-top: 2.25rem;
+}
+
+.status {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.error {
+  margin: 1.25rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(27, 36, 32, 0.18);
+  color: #8a3b26;
+  font-size: 1rem;
+}
+
+/* Buttons */
+
+.btn {
+  appearance: none;
+  border: 0;
+  border-radius: 2px;
+  background: var(--ink);
+  color: var(--paper);
+  font: inherit;
+  font-size: 1.02rem;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: #2c3a34;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.btn-text {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0.25rem 0;
+  font: inherit;
+  font-size: 0.98rem;
+  color: var(--brass);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+}
+
+.btn-text.danger {
+  color: var(--danger);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+/* History */
+
+.history {
+  margin-top: 4rem;
+}
+
+.history-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.history-head h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.count {
+  margin: 0;
+  color: var(--mist);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.history-head .btn-text {
+  margin-left: auto;
+}
+
+.ledger {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ledger-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.4rem 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ledger-text {
+  margin: 0;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.45;
+}
+
+.ledger-meta {
+  grid-column: 1;
+  margin: 0;
+  color: var(--mist);
+  font-size: 0.95rem;
+}
+
+.ledger-item .btn-text {
+  grid-row: 1;
+  grid-column: 2;
+  align-self: start;
+  font-size: 0.9rem;
+}
+
+.empty {
+  margin: 1.5rem 0 0;
+  color: var(--mist);
+  font-style: italic;
+}
+
+#load-more {
+  display: block;
+  margin: 1.5rem 0 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Small screens */
+
+@media (max-width: 520px) {
+  html {
+    font-size: 17px;
+  }
+  .ledger-item {
+    grid-template-columns: 1fr;
+  }
+  .ledger-item .btn-text {
+    grid-row: auto;
+    grid-column: 1;
+    justify-self: start;
+  }
+  .slip {
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
